@@ -11,8 +11,14 @@ This format recognizes the following attributes relevant to each Pomodoro:
 ### timestamp
 
 The time when the Pomodoro started.
-This must be formatted as [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).
+This must be formatted as [RFC 3339](https://en.wikipedia.org/wiki/RFC_3339).
 The offset from UTC must be included in the timestamp in order to preserve local dates.
+
+For example:
+
+```
+2016-06-03T17:01:31-04:00
+```
 
 ### duration (optional)
 
