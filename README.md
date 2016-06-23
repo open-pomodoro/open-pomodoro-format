@@ -65,9 +65,12 @@ There are three files within this directory:
 The `current` file must contain only the timestamp on the first line.
 The second line should include other attributes in logfmt.
 
-During a Pomodoro, the timestamp will be in the future.
-If the file has a timestamp in the past, the Pomodoro has ended, and the user has not acknowledged it yet.
-If the file is missing or empty, there is no current Pomodoro.
+The end time of the Pomodoro is calculated by adding the duration to the timestamp.
+The duration defaults to 25 minutes, but can be overridden by user input or user defaults when the Pomodoro is started.
+
+During a Pomodoro, the end time will be in the future.
+If the `current` file has a timestamp and the end time is in the past, the Pomodoro has ended, and the user has not acknowledged it yet.
+If the `current` file is missing or empty, there is no current Pomodoro.
 
 ### `history`
 
