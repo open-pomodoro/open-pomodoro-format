@@ -61,7 +61,7 @@ For example:
 duration=25 description="Open Pomodoro Standard" tags=personal,writing
 ```
 
-### timestamp
+### `start_time`
 
 The time when the Pomodoro started.
 This must be formatted as [RFC 3339](https://en.wikipedia.org/wiki/RFC_3339).
@@ -73,16 +73,16 @@ For example:
 2016-06-03T17:01:31-04:00
 ```
 
-### duration (optional)
+### `duration` (optional)
 
 The length of the Pomodoro in minutes.
 This defaults to 25.
 
-### description (optional)
+### `description` (optional)
 
 A description of the task to be worked on during the Pomodoro.
 
-### tags (optional)
+### `tags` (optional)
 
 A set of relevant tags for the Pomodoro.
 The tags are comma-separated, and may contain any characters except for comma.
@@ -106,21 +106,31 @@ There are three files within this directory:
 
 ### `current`
 
-The `current` file must contain only the timestamp on the first line.
-The second line should include other attributes in logfmt.
+The `current` file must begin with the timestamp on the first line.
+Other attributes in logfmt may follow the timestamp.
 
 The end time of the Pomodoro is calculated by adding the duration to the timestamp.
-The duration defaults to 25 minutes, but can be overridden by user input or user defaults when the Pomodoro is started.
+The duration defaults to 25 minutes, but can be overridden by user defaults, or user input when the Pomodoro is started.
 
 During a Pomodoro, the end time will be in the future.
-If the `current` file has a timestamp and the end time is in the past, the Pomodoro has ended, and the user has not acknowledged it yet.
-If the `current` file is missing or empty, there is no current Pomodoro.
+If the `current` file has a timestamp and the end time is in the past, the Pomodoro has done, and the user has not acknowledged it yet.
+If the `current` file is missing or empty, there is no current Pomodoro (inactive).
+
+```
+2016-06-03T18:14:21-04:00 duration=25 description="Open Pomodoro Standard" tags=personal,writing
+```
 
 ### `history`
 
 Each line represents a single Pomodoro.
 The timestamp must be at the beginning of the line.
-Attributes should follow the timestamp.
+Attributes may follow the timestamp.
+
+```
+2016-06-03T17:01:31-04:00 duration=25 description="Open Pomodoro Standard" tags=personal,writing
+2016-06-03T17:32:49-04:00 duration=25 tags=work
+2016-06-03T18:14:21-04:00 duration=25 tags=work
+```
 
 ### `settings`
 
