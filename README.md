@@ -51,6 +51,16 @@ Clear the existing Pomodoro, if any.
 
 This format recognizes the following attributes relevant to each Pomodoro:
 
+### Format
+
+All attributes, except for the timestamp, are stored in [logfmt](https://brandur.org/logfmt).
+
+For example:
+
+```
+duration=25 description="Open Pomodoro Standard" tags=personal,writing
+```
+
 ### timestamp
 
 The time when the Pomodoro started.
@@ -76,15 +86,6 @@ A description of the task to be worked on during the Pomodoro.
 
 A set of relevant tags for the Pomodoro.
 The tags are comma-separated, and may contain any characters except for comma.
-
-## Attribute Format
-
-All attributes except for the timestamp are stored in [logfmt](https://brandur.org/logfmt).
-For example:
-
-```
-duration=25 description="Open Pomodoro Standard" tags=personal,writing
-```
 
 ## Files
 
