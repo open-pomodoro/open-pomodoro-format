@@ -1,8 +1,51 @@
 # Open Pomodoro Format
 
 This document describes a collection of files and their formats for reading and writing [Pomodoro](https://en.wikipedia.org/wiki/Pomodoro_Technique) data.
-The goal of this format is for a user to by able to use any Pomodoro application or utility,
-and freely switch between them without losing data.
+The goal of this format is for a user to by able to use any Pomodoro application or utility, and freely switch between them without losing data.
+
+## Terminology
+
+### States
+
+#### Inactive
+
+> No Pomodoro is currently active.
+
+The application should not show a timer, or show the default duration statically.
+The user should have the option to *start* a Pomodoro.
+
+#### Active
+
+> A Pomodoro has been started, and the duration has not yet elapsed.
+
+The application should show the time remaining on the Pomodoro
+The user should have options to *finish* the Pomodoro early or *cancel* the Pomodoro.
+
+#### Done
+
+> A Pomodoro was active, and then the duration elapsed.
+
+The application should not show a timer, or show that the time remaining is zero.
+An alert should be displayed.
+The user should have options to *clear* the Pomodoro, *start* a new Pomodoro, or *finish* a Pomodoro late.
+
+### Actions
+
+#### Start
+
+Start a Pomodoro at the current time.
+
+The user may be given options to specify the duration, description, or tags for the Pomodoro.
+
+#### Finish
+
+Finish a Pomodoro early (or late).
+
+Otherwise, Pomodoros are considered finished after the duration, which defaults to 25 minutes.
+
+#### Clear
+
+Clear the existing Pomodoro, if any.
 
 ## Attributes
 
